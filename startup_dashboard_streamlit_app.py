@@ -3,14 +3,15 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import datetime
 
-st.set_page_config(layout = "wide",page_title= "Startup Analysis")
+st.set_page_config(layout = "centered",page_title= "Startup Analysis")
 df = pd.read_csv("startup_cleaned.csv")
 df["date"]= pd.to_datetime(df["date"],errors= "coerce")
 df["year"]= df["date"].dt.year
 df["month"]= df["date"].dt.month
 
 def load_overal_analysis():
-    st.title("Overal Analysis")
+    st.title("Overal")
+    st.title("Analysis Made  By aashish")
     total= round(df["amount"].sum())
     max_funding= round(df.groupby("startup")["amount"].max().sort_values(ascending= False).head(1).values[0])
     average= round(df.groupby("startup")["amount"].sum().mean())
